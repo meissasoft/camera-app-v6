@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { Field, Formik, FormikHelpers } from 'formik';
+import { Field, Formik } from 'formik';
 
-// import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Button from '@/components/core/Button';
 import Header from '@/components/core/Header';
 
@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/useReduxTypedHooks';
 import { panCardDetailsThunk } from '@/store/user/userSlice';
 import { getUserDataSelector } from '@/store/user';
 import Loader from '@/components/core/Loader';
+import { setNoRecordFound, setUpdationFailed } from '@/store/app';
 import { DivMain, FooterButtonStyle, DivDateField, DivDateSpan, DivDateCalendarIcon, StyledForm } from './index.styles';
 /**
  *
@@ -27,40 +28,57 @@ interface Values {
 }
 
 const FillTheForm = () => {
-  // const { setFieldError } = useFormikContext();
   const initialValue: Values = {
     panNumber: '',
     dob: '',
   };
-  const { status } = useAppSelector(getUserDataSelector);
+  const { error, status } = useAppSelector(getUserDataSelector);
   const dispatch = useAppDispatch();
   const { t } = useTranslation('enter_details');
   const router = useRouter();
+  const formikRef: any = useRef(null);
 
-  // useEffect(() => {
-  //   if (error)
-  // }, [error]);
+  useEffect(() => {
+    // set the error after api call
+    if (error && error.length > 0 && formikRef && formikRef.current) {
+      formikRef.current.setErrors({
+        panNumber: error,
+      });
+
+      if (error === 'no record found') {
+        dispatch(setNoRecordFound(true));
+        dispatch(setUpdationFailed(false));
+        router.push('/kyc_details_error');
+      }
+    }
+    // clear error if you want
+  }, [error]);
 
   const onClickHeaderIcon = () => {
     router.push('/commence_your_video_kyc');
   };
 
-  const onFormSubmit = async (values: Values, { resetForm }: FormikHelpers<Values>) => {
+  const onFormSubmit = async (values: Values) => {
     const reqData = {
       panNumber: values.panNumber,
       dob: values.dob,
     };
     // Call the api
-    dispatch(panCardDetailsThunk(reqData)).catch((err) => {
-      console.log('error', err);
-    });
-    // router.push('/fetching_details');
-    resetForm({});
+    dispatch(panCardDetailsThunk(reqData));
   };
+
+  if (!navigator.onLine) {
+    router.push('/no_internet');
+  }
 
   return (
     <DivMain>
-      <Formik initialValues={initialValue} onSubmit={onFormSubmit} validationSchema={panCardScheema}>
+      <Formik
+        initialValues={initialValue}
+        onSubmit={onFormSubmit}
+        validationSchema={panCardScheema}
+        innerRef={formikRef}
+      >
         {({ values, errors }) => {
           return (
             <StyledForm>
@@ -77,7 +95,7 @@ const FillTheForm = () => {
                   value={values.panNumber}
                   error={errors.panNumber}
                 />
-                <DivDateField>
+                <DivDateField className="mt-2">
                   <Field
                     as={FieldInput}
                     id="dob"

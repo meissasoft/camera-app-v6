@@ -8,6 +8,8 @@ export const initialState: appState = {
   cardFront: '',
   cardBack: '',
   recordedVideo: '',
+  noRecordFound: false,
+  updationFailed: false,
 };
 
 const appSlice = createSlice({
@@ -26,6 +28,12 @@ const appSlice = createSlice({
     setCardBack: (state: appState, action: PayloadAction<string>) => {
       state.cardBack = action.payload;
     },
+    setNoRecordFound: (state: appState, action: PayloadAction<boolean>) => {
+      state.noRecordFound = action.payload;
+    },
+    setUpdationFailed: (state: appState, action: PayloadAction<boolean>) => {
+      state.updationFailed = action.payload;
+    },
   },
   // redux thunk will be added in extraReducers
   extraReducers: (builder: ActionReducerMapBuilder<appState>) => {
@@ -34,6 +42,7 @@ const appSlice = createSlice({
   },
 });
 
-export const { setVerificationStep, setRecordedVideo, setCardFront, setCardBack } = appSlice.actions;
+export const { setVerificationStep, setRecordedVideo, setCardFront, setCardBack, setNoRecordFound, setUpdationFailed } =
+  appSlice.actions;
 
 export default appSlice.reducer;

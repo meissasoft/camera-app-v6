@@ -4,4 +4,6 @@ export type appState = {
   cardFront: string;
   cardBack: string;
   recordedVideo: string;
+  noRecordFound: boolean;
+  updationFailed: boolean;
 };

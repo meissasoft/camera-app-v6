@@ -2,17 +2,17 @@ import { useRouter } from 'next/router';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import Header from '@/components/core/Header';
 import Button from '@/components/core/Button';
 import FieldInput from '@/components/core/FieldInput';
 import FieldTextArea from '@/components/core/TextArea';
 
-import { useAppDispatch } from '@/hooks/useReduxTypedHooks';
-import { setVerificationStep } from '@/store/app';
-import image from '@/assets/png/image.png';
+import { useAppDispatch, useAppSelector } from '@/hooks/useReduxTypedHooks';
+import { getAppDataSelector, setVerificationStep } from '@/store/app';
+import { VerifiiedIcon } from '@/assets/svg/verified-Icon';
 
+import { Denied } from '@/assets/svg/denied';
 import { DivMain, FooterButtonStyle, SvgDiv } from './index.styles';
 
 /**
@@ -24,10 +24,14 @@ const CKYC_NO = () => {
   const { t } = useTranslation('ckyc_no');
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { updationFailed } = useAppSelector(getAppDataSelector);
 
   const onClickHeaderIcon = () => {
     router.push('/kyc_details');
   };
+
+  // use formik or whatever call the api and if no updation failed dispatch(setUpdationFailed(true))
+  //  and dispatch(setNoRecordFound(false)) and router.push("/kyc_details_error");
 
   const handelProceed = () => {
     dispatch(setVerificationStep(2));
@@ -38,9 +42,7 @@ const CKYC_NO = () => {
     <DivMain>
       <div>
         <Header text="CKYC No: 2398583658355" onClick={onClickHeaderIcon} />
-        <SvgDiv>
-          <Image src={image} />
-        </SvgDiv>
+        <SvgDiv>{updationFailed ? <Denied /> : <VerifiiedIcon />}</SvgDiv>
         <FieldInput placeholder={t('full_name')} name={'mobile'} className="my-2 m-auto" autoComplete="off" />
         <FieldInput placeholder={t('father_name')} name={'mobile'} className="my-2 m-auto" autoComplete="off" />
         <FieldInput placeholder={t('dob')} name={'mobile'} className="my-2 m-auto" autoComplete="off" />

@@ -28,6 +28,10 @@ const CommenceYourVideoKYC = () => {
     router.push('/ckyc_no');
   };
 
+  if (!navigator.onLine) {
+    router.push('/no_internet');
+  }
+
   return (
     <DivMain>
       <div>
