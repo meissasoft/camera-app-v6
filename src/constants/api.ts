@@ -3,5 +3,9 @@ export const REQUEST_HEADERS = {
   Accept: 'application/json',
 };
 
+// Base Url
 export const API_URL = '';
-export const API_SIGNIN = '';
+
+// Endpoint to be called;
+
+export const API_PAN_DETAILS = '/get/pan/details';

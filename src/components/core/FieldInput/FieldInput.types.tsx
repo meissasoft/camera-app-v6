@@ -8,4 +8,5 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   InputProps?: any;
   isDate?: boolean;
+  error?: string;
 }

@@ -1,0 +1,12 @@
+{
+    "full_name": "पूरा नाम",
+    "father_name": "पिता का नाम",
+    "dob": "जन्म तिथि",
+    "gender": "लिंग",
+    "uid": "यूआईडी",
+    "pan_number": "पैन नंबर",
+    "current_address": "वर्तमान पता",
+    "permanent_address": "स्थायी पता",
+    "description": "विवरण",
+    "proceed": "आगे बढ़ना"
+}

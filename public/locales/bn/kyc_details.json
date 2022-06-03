@@ -1,0 +1,9 @@
+{
+    "kyc_details": "KYC বিশদ",
+    "ckyc_number": "CKYC নম্বর",
+    "full_name": "পুরো নাম",
+    "father_name": "বাবার নাম",
+    "age": "বয়স",
+    "description": "বর্ণনা",
+    "view_ckyc_details": "CKYC বিবরণ দেখুন"
+}

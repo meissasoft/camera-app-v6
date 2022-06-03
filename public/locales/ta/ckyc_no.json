@@ -1,0 +1,12 @@
+{
+    "full_name": "முழு பெயர்",
+    "father_name": "தந்தையின் பெயர்",
+    "dob": "DOB",
+    "gender": "பாலினம்",
+    "uid": "UID",
+    "pan_number": "பான் எண்",
+    "current_address": "தற்போதைய முகவரி",
+    "permanent_address": "நிரந்தர முகவரி",
+    "description": "వివరణ",
+    "proceed": "தொடரவும்"
+}

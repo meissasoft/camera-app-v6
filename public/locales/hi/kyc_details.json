@@ -1,0 +1,9 @@
+{
+    "kyc_details": "केवाईसी विवरण",
+    "ckyc_number": "सीकेवाईसी नंबर",
+    "full_name": "पूरा नाम",
+    "father_name": "पिता का नाम",
+    "age": "आयु",
+    "description": "विवरण",
+    "view_ckyc_details": "सीकेवाईसी विवरण देखें"
+}

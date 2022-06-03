@@ -1,63 +1,96 @@
-import { useRouter } from 'next/router';
+import router from 'next/router';
 
+import React from 'react';
+
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import Button from '@/components/core/Button';
+import { GreaterThenIcon } from '@/assets/svg/greaterthen-icon';
 import Header from '@/components/core/Header';
+import Button from '@/components/core/Button';
 
-import FieldInput from '@/components/core/FieldInput';
-import KYCVideo from '@/assets/svg/kyc_video';
+import { CardIcon } from '@/assets/svg/card-icon';
 
-import { DivMain, FooterButtonStyle, SvgDiv } from './index.styles';
+import {
+  DivButton,
+  DivMain,
+  DivVerificationCardStyled,
+  DocumentContainer,
+  IdentificationSmallTextStyled,
+  IdentificationStyled,
+  IdentificationTextStyled,
+  IdentifyText,
+  Row,
+  StyledLine,
+} from './index.styles';
 
 /**
  *
- * @returns Commerce Your video page
+ * @returns Commence Video Page
  */
 
-const CommenceYourVideoKYC = () => {
-  // const { t } = useTranslation('commence_your_video_kyc');
-  const router = useRouter();
+const Commenceyourvideo = () => {
+  const { t } = useTranslation('commence_video');
 
   const onClickHeaderIcon = () => {
-    router.push('/fill_the_form');
+    router.push('/aadhaar_xml');
   };
+  const document = [
+    {
+      name: t('CKYC'),
+      Svg: GreaterThenIcon,
+    },
+    {
+      name: t('facial_verification'),
+      Svg: GreaterThenIcon,
+    },
+  ];
 
-  const handelProceed = () => {
-    router.push('/keeps_things_handy');
+  const handleStart = () => {
+    router.push('/enter_details');
+  };
+  const onRowClickHandel = () => {
+    router.push('/enter_details');
   };
 
   return (
     <DivMain>
       <div>
-        <Header text="KYC Details" onClick={onClickHeaderIcon} />
-        <SvgDiv>
-          <KYCVideo />
-        </SvgDiv>
-        <FieldInput
-          placeholder="CKYC number"
-          name={'mobile'}
-          className="my-2 mt-5 m-auto rounded border p-2 loginInput"
-        />
-        <FieldInput placeholder="Full Name" name={'mobile'} className="my-2 m-auto rounded border p-2 loginInput" />
-        <FieldInput placeholder="Father name" name={'mobile'} className="my-2 rounded border p-2 loginInput" />
-        <FieldInput placeholder="Age" name={'mobile'} className="my-2   rounded border p-2 loginInput" />
-        <FieldInput placeholder="Description" name={'mobile'} className="my-2 m-auto rounded border p-2 loginInput" />
+        <Header onClick={onClickHeaderIcon} text={t('commence_your_video_kyc')} />
+        <IdentificationStyled>
+          <DivVerificationCardStyled>
+            <CardIcon />
+          </DivVerificationCardStyled>
+          <IdentificationTextStyled>{t('verify_your_identity')}</IdentificationTextStyled>
+          <IdentificationSmallTextStyled>
+            {t('please_keep_your_following_documents_handy_before_you_proceed_with_your_full_kyc_process.')}
+          </IdentificationSmallTextStyled>
+        </IdentificationStyled>
+        <StyledLine />
+        <DocumentContainer>
+          {document.map((doc, id) => (
+            <Row key={id} onClick={onRowClickHandel}>
+              <div className="col-1">{doc.Svg()}</div>
+              <div className="col-11">
+                <IdentifyText>{doc.name}</IdentifyText>
+              </div>
+            </Row>
+          ))}
+        </DocumentContainer>
       </div>
-
-      <FooterButtonStyle>
-        <div className="button-container">
-          <Button onClick={handelProceed}>View CKYC details</Button>
-        </div>
-      </FooterButtonStyle>
+      <DivButton>
+        <Button onClick={handleStart} className="m-auto">
+          {t('start')}
+        </Button>
+      </DivButton>
     </DivMain>
   );
 };
 
 export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['commence_your_video_kyc'])),
+    ...(await serverSideTranslations(locale, ['commence_video'])),
   },
 });
 
-export default CommenceYourVideoKYC;
+export default Commenceyourvideo;

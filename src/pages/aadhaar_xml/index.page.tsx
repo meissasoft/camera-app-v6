@@ -16,11 +16,11 @@ import { DivMain, DivSvg, FooterButtonStyle, DivForm, FormLabel, MainStyle, Styl
 const AadhaarXml = () => {
   const { t } = useTranslation('aadhaar_xml');
   const router = useRouter();
-  const [modalShow, setModalShow] = useState<boolean>(false);
+  const [modalShow, setModalShow] = useState<boolean>(true);
   const [ischecked, setIsChecked] = useState<boolean>(false);
 
   const onClickHeaderIcon = () => {
-    router.push('/aadhaar_xml');
+    router.push('/language');
   };
 
   const handleContinue = () => {
@@ -28,11 +28,11 @@ const AadhaarXml = () => {
   };
 
   const onAgree = () => {
-    router.push('/aadhaar_offline_kyc');
+    router.push('/commence_your_video_kyc');
   };
 
   const onDisAgree = () => {
-    setModalShow(false);
+    router.push('/language');
   };
 
   return (

@@ -1,20 +1,45 @@
 import { useRef } from 'react';
-import { FieldInputStyled } from './FieldInput.styles';
+import { ErrorInfo } from '@/assets/svg/error-info';
+import { DivRelative, FieldInputStyled, FieldInputLabel, StyledErrorDiv, StyledErrorText } from './FieldInput.styles';
 import { IInputProps } from './FieldInput.types';
 
-const FieldInput = ({ className, isDate, ...props }: IInputProps) => {
+const FieldInput = ({ className, placeholder, value, error, isDate, ...props }: IInputProps) => {
   const ref: any = useRef(null);
+
   const onFocus = () => {
-    if (isDate) {
+    if (isDate && ref.current) {
       ref.current.type = 'date';
     }
   };
+
   const onBlur = () => {
-    if (isDate) {
+    if (isDate && ref.current) {
       ref.current.type = 'text';
     }
   };
-  return <FieldInputStyled onFocus={onFocus} onBlur={onBlur} ref={ref} className={`${className}`} {...props} />;
+
+  return (
+    <DivRelative>
+      <FieldInputStyled
+        {...props}
+        className={`${className}`}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        error={error && error.length > 0 ? true : false}
+        ref={ref}
+      />
+
+      <FieldInputLabel className="label" value={value}>
+        <span>{placeholder}</span>
+      </FieldInputLabel>
+      {error && error.length > 0 && (
+        <StyledErrorDiv>
+          <ErrorInfo />
+          <StyledErrorText>{error}</StyledErrorText>
+        </StyledErrorDiv>
+      )}
+    </DivRelative>
+  );
 };
 
 export default FieldInput;

@@ -1,0 +1,12 @@
+{
+    "full_name": "ਪੂਰਾ ਨਾਂਮ",
+    "father_name": "ਪਿਤਾ ਦਾ ਨਾਮ",
+    "dob": "ਡੀ.ਓ.ਬੀ",
+    "gender": "ਲਿੰਗ",
+    "uid": "UID",
+    "pan_number": "ਪੈਨ ਨੰਬਰ",
+    "current_address": "ਮੌਜੂਦਾ ਪਤਾ",
+    "permanent_address": "ਪੱਕਾ ਪਤਾ",
+    "description": "ਵਰਣਨ",
+    "proceed": "ਅੱਗੇ ਵਧੋ"
+}

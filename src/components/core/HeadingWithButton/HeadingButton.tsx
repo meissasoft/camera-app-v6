@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Button } from 'react-bootstrap';
 
-import { ButtonText, DivHeader, StyledText } from './HeadingButton.style';
+import { DivHeader, StyledText } from './HeadingButton.style';
 import { IHeaderProps } from './HeadingButton.types';
 
 function HeadingWithButton({ text, retake }: IHeaderProps) {
@@ -18,7 +18,7 @@ function HeadingWithButton({ text, retake }: IHeaderProps) {
       </div>
       <div>
         <Button onClick={onIconCLick}>
-          <ButtonText>{retake}</ButtonText>
+          <div className="text">{retake}</div>
         </Button>
       </div>
     </DivHeader>

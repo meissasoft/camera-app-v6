@@ -1,0 +1,12 @@
+{
+    "full_name": "ಪೂರ್ಣ ಹೆಸರು",
+    "father_name": "ತಂದೆಯ ಹೆಸರು",
+    "dob": "DOB",
+    "gender": "ಲಿಂಗ",
+    "uid": "ಯುಐಡಿ",
+    "pan_number": "ಪ್ಯಾನ್ ಸಂಖ್ಯೆ",
+    "current_address": "ಪ್ರಸ್ತುತ ವಿಳಾಸ",
+    "permanent_address": "ಶಾಶ್ವತ ವಿಳಾಸ",
+    "description": "ವಿವರಣೆ",
+    "proceed": "ಮುಂದುವರೆಯಲು"
+}

@@ -1,0 +1,12 @@
+{
+    "full_name": "Full Name",
+    "father_name": "Father name",
+    "dob": "DOB",
+    "gender": "Gender",
+    "uid": "UID",
+    "pan_number": "PAN Number",
+    "current_address": "Current Address",
+    "permanent_address": "Permanent Address",
+    "description": "Description",
+    "proceed": "Proceed"
+}

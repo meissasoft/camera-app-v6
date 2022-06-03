@@ -1,0 +1,9 @@
+{
+    "kyc_details": "KYC Details",
+    "ckyc_number": "CKYC number",
+    "full_name": "Full Name",
+    "father_name": "Father Name",
+    "age": "Age",
+    "description": "Description",
+    "view_ckyc_details": "View CKYC details"
+}

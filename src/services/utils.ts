@@ -8,18 +8,6 @@ export const postRequest = (url: string, body: IRequestBody | any, config?: Axio
   return axios.post(API_URL + url, body, config);
 };
 
-export const postRequestWithToken = (
-  url: string,
-  body: IRequestBody | any,
-  token: string,
-  config?: AxiosRequestConfig
-) => {
-  return axios.post(API_URL + url, body, {
-    ...config,
-    headers: { ...REQUEST_HEADERS, authorization: `Bearer ${token}`, ...config?.headers },
-  });
-};
-
 export const putRequest = (url: string, body: IRequestBody | any) => {
   return axios.put(API_URL + url, body);
 };

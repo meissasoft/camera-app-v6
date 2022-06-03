@@ -1,0 +1,9 @@
+{
+    "kyc_details": "KYC వివరాలు",
+    "ckyc_number": "CKYC నంబర్",
+    "full_name": "పూర్తి పేరు",
+    "father_name": "తండ్రి పేరు",
+    "age": "వయసు",
+    "description": "వివరణ",
+    "view_ckyc_details": "CKYC వివరాలను వీక్షించండి"
+}

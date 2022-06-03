@@ -22,13 +22,14 @@ import {
  *
  * @returns status_updated_successfully page
  */
-const onClickHeaderIcon = () => {
-  router.push('/signature_captured');
-};
 
 const StatusUpdatedSuccessfully = () => {
   const [displayLottie, setDisplayLottie] = useState<boolean>(false);
   const [stop, setStop] = useState<boolean>(false);
+
+  const onClickHeaderIcon = () => {
+    router.push('/video_screen');
+  };
 
   const { t } = useTranslation('kyc_update_successfully');
 
