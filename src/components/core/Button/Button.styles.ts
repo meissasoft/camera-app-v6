@@ -17,12 +17,13 @@ export const ButtonStyled = styled.button<{
 `
       : disabled
       ? `
-      background-color: ${COLORS.GREY_90};
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(269.82deg, #38A1F7 0.4%, #38568F 99.6%) !important;
       cursor: not-allowed;
+      opacity: 0.5;
 `
       : `
       border: 0px;
-      background-image: linear-gradient(to right, #38568f 0%, #38a1f7 100%, #38568f 100%);
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(269.82deg, #38A1F7 0.1%, #38568F 99.85%) !important;
 `};
 
   margin-left: 18px;

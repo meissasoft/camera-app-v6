@@ -8,7 +8,7 @@ export const COLORS = {
   FAUX_CHINESE_BLUE: '#38568F',
   WHITE_100: '#fff',
   WHITE_200: '#ffffff',
-  GREY_90: '#04040440',
+  GREY_90: '#00000033',
   RED_100: '#C94040',
   INDIGO_100: '#8364FF',
   GREY_2: '#F2F2F2',
