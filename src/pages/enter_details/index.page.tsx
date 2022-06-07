@@ -65,7 +65,7 @@ const FillTheForm = () => {
     };
     // Call the api
     dispatch(panCardDetailsThunk(reqData));
-    // router.push('/ckyc_no');
+    router.push('/ckyc_no');
   };
 
   if (!navigator.onLine) {
